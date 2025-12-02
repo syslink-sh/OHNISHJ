@@ -12,12 +12,9 @@ The OHNISHJ Translator is a browser-based tool that encodes ASCII text into a sp
 
 ## Features
 
-- 🔤 **Encode** - Convert plain text to OHNISHJ format
-- 🔓 **Decode** - Convert OHNISHJ text back to plain text
-- 📋 **Copy to Clipboard** - Quick copy functionality for encoded/decoded text
-- ⌨️ **Keyboard Shortcuts** - Press Ctrl+Enter to encode/decode
-- 🪟 **Windows 7 UI** - Authentic Aero glass interface using 7.css
-- ⚡ **Real-time Processing** - Instant encoding and decoding
+- **Encode** - Convert plain text to OHNISHJ format
+- **Decode** - Convert OHNISHJ text back to plain text
+- **Real-time Processing** - Instant encoding and decoding
 
 ## How It Works
 
@@ -36,14 +33,12 @@ The OHNISHJ encoding system works by:
 - Encoded: `JOHn john jOHN joHn`
 
 ## Getting Started
-
-Simply open `index.html` in a modern web browser. No installation or build process required.
+Simply open `index.html` in a web browser. No installation or build process required.
 
 ### Prerequisites
+- Web browser with JavaScript enabled
+- Support for CSS backdrop-filter (for aero effect)
 
-- Modern web browser with JavaScript enabled
-- Support for CSS backdrop-filter (for glass effect)
-- Clipboard API support (optional, for copy functionality)
 
 ## Usage
 
@@ -61,51 +56,6 @@ Simply open `index.html` in a modern web browser. No installation or build proce
 3. Click **Decode** or press `Ctrl+Enter`
 4. Copy the decoded output using the **Copy** button
 
-## File Structure
-
-```
-John Translator/
-├── index.html      # Main HTML structure
-├── styles.css      # Custom styling and Windows 7 theme
-├── script.js       # UI interactions and event handlers
-├── ohnishj.js      # Core encoding/decoding algorithm
-├── favicon.png     # Application icon
-└── README.md       # This file
-```
-
-## Browser Compatibility
-
-- Chrome/Edge (recommended)
-- Firefox
-- Safari
-- Opera
-
-**Note:** The glass effect requires browsers with backdrop-filter support. Older browsers will show a solid background instead.
-
-### Technology Stack
-
-- Pure vanilla JavaScript (no dependencies)
-- HTML5
-- CSS3 with [7.css](https://khang-nd.github.io/7.css/) framework
-- Modern DOM APIs
-
-## License
-
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International** License (**CC BY-NC 4.0**).
-
-You are free to:
-- Share and adapt the code for non-commercial purposes
-- Provide attribution to the original author
-
-You cannot:
-- Use this code for commercial purposes without permission
-
-## Credits
-
-- UI Framework: [7.css](https://github.com/khang-nd/7.css) by khang-nd
-- Windows 7 Aero design inspired by Microsoft Windows 7
-- Made by [syslink](https://github.com/syslink-sh)
+**Note:** The Aero effect requires browsers with backdrop-filter support. Older browsers will show a solid background instead.
 
 ---
-
-Made with ❤️ for text encoding enthusiasts
