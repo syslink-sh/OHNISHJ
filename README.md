@@ -1,4 +1,5 @@
 <img style="width: 128px; height: 128px" src="gh-images/logo.png" alt="OHNISHJ Translator Logo"/>
+
 ## OHNISHJ Translator
 
 A text encoding/decoding tool that converts text to and from the OHNISHJ format.
