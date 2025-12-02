@@ -96,23 +96,28 @@ var Ohnishj = (function() {
     return wordIndices[splitPoint];
   }
   
-  // Split by sentences
+  // Split text into sentences
   function splitSentences(text) {
     var sentences = [];
     var current = '';
+    var sentenceEnders = /[.!?⸮‽]/;
     
     for (var i = 0; i < text.length; i++) {
       var ch = text.charAt(i);
       current += ch;
       
-      // Sentence terminators
-      if (ch === '.' || ch === '!' || ch === '?' || ch === '⸮' || ch === '‽') {
+      if (sentenceEnders.test(ch)) {
+        // Include trailing whitespace
+        while (i + 1 < text.length && /\s/.test(text.charAt(i + 1))) {
+          i++;
+          current += text.charAt(i);
+        }
         sentences.push(current);
         current = '';
       }
     }
     
-    // Remaining text
+    // Add remaining text
     if (current.trim()) {
       sentences.push(current);
     }
@@ -163,17 +168,17 @@ var Ohnishj = (function() {
     }
     
     var sentences = splitSentences(text);
-    var encoded = [];
+    var result = '';
     
-    // Process each sentence
+    // Encode each sentence
     for (var i = 0; i < sentences.length; i++) {
-      var sentence = sentences[i].trim();
-      if (sentence) {
-        encoded.push(encodeSentence(sentence));
+      result += encodeSentence(sentences[i]);
+      if (i < sentences.length - 1) {
+        result += ' ';
       }
     }
     
-    return encoded.join(' ');
+    return result;
   }
   
   // Decode single sentence
@@ -214,19 +219,22 @@ var Ohnishj = (function() {
       throw new Error('Empty input');
     }
     
-    // Split by sentence markers
+    // Split by > markers
     var parts = ohnishjText.split(/(?<=>)\s+(?=[^>]*>)/);
-    var decoded = [];
+    var result = '';
     
-    // Process each part
+    // Decode each sentence
     for (var i = 0; i < parts.length; i++) {
       var part = parts[i].trim();
       if (part) {
-        decoded.push(decodeSentence(part));
+        result += decodeSentence(part);
+        if (i < parts.length - 1) {
+          result += ' ';
+        }
       }
     }
     
-    return decoded.join(' ');
+    return result;
   }
   
   // Public API

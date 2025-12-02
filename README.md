@@ -19,18 +19,16 @@ The OHNISHJ Translator is a browser-based tool that encodes text using a word sc
 
 The OHNISHJ encoding system works by:
 
-1. Splitting text into sentences (by `.`, `!`, `?`, `⸮`, `‽`)
-2. Scrambling each word by moving the first letter to the end
-3. Identifying the sentence split point (typically at the main verb)
-4. Rearranging each sentence by moving the subject to the end
-5. Placing a `>` marker between the verb/object and the subject
+1. Scrambling each word by moving the first letter to the end
+2. Identifying the sentence split point (typically at the main verb)
+3. Rearranging the sentence by moving the subject to the end
+4. Placing a `>` marker between the verb/object and the subject
 
 **Example:**
-- Input: `The cat jumps. The dog runs!`
-- Split sentences: `The cat jumps.` and `The dog runs!`
-- Word scrambling: `heT atc umpsj.` and `heT ogd unsr!`
-- Sentence rearrangement: `umpsj.> heT atc` and `unsr!> heT ogd`
-- Result: Each sentence is encoded independently with its own `>` marker
+- Input: `The cat jumps`
+- Word scrambling: `heT atc umpsj`
+- Sentence rearrangement: `umpsj> heT atc`
+- Result: The verb/object comes first, followed by `>`, then the subject
 
 ## Getting Started
 Simply open `index.html` in a web browser. No installation or build process required.
