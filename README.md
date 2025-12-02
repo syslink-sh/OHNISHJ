@@ -2,7 +2,7 @@
 
 # OHNISHJ Translator
 
-A text encoding/decoding tool that converts text to and from the OHNISHJ format using a Windows 7 Aero interface.
+A text encoding/decoding tool that converts text to and from the OHNISHJ format.
 
 [View the website](https://ohnishj.syslink.dev)
 
