@@ -1,0 +1,117 @@
+body {
+  background: #3e7cb1;
+  background: linear-gradient(to bottom, #4580b3 0%, #2e5f8f 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at top left, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(0,0,0,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.window {
+  max-width: 850px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.window-body {
+  margin: 0;
+  padding: 8px;
+}
+
+fieldset {
+  margin-bottom: 12px;
+}
+
+fieldset legend {
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  min-height: 110px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+fieldset button {
+  margin-top: 6px;
+  min-width: 75px;
+}
+
+.btn-group {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+}
+
+.btn-group button {
+  min-width: 70px;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.dialog-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.dialog-content p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dialog-ok {
+  min-width: 80px !important;
+}
+
+.status-bar {
+  margin: 0;
+}
+
+.status-bar a {
+  color: #000;
+  text-decoration: none;
+}
+
+.status-bar a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .window {
+    max-width: 100%;
+  }
+}
