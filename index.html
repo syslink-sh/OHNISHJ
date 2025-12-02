@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OHNISHJ Translator - Encode and decode text using word scrambling algorithm">
   <title>OHNISHJ Translator</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="https://unpkg.com/7.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Main window -->
   <div class="window glass active">
+    <!-- Title bar -->
     <div class="title-bar">
       <div class="title-bar-text">
-        <img src="favicon.png" alt="" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;">
+        <img src="favicon.png" alt="Logo" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;">
         OHNISHJ Translator
       </div>
       <div class="title-bar-controls">
@@ -22,22 +25,25 @@
       </div>
     </div>
     
+    <!-- Content area -->
     <div class="window-body">
+      <!-- Tab navigation -->
       <menu role="tablist">
         <button role="tab" aria-selected="true" aria-controls="encode-tab">Encode</button>
         <button role="tab" aria-controls="decode-tab">Decode</button>
       </menu>
 
+      <!-- Encode panel -->
       <article role="tabpanel" id="encode-tab">
         <fieldset>
           <legend>Input Text</legend>
-          <textarea id="plainInput" placeholder="Type or paste text to encode..."></textarea>
+          <textarea id="plainInput" placeholder="Type or paste text to encode..." aria-label="Plain text input"></textarea>
           <button id="encodeBtn">Encode</button>
         </fieldset>
 
         <fieldset>
           <legend>Encoded Output</legend>
-          <textarea id="encodedOutput" readonly placeholder="Encoded output will appear here..."></textarea>
+          <textarea id="encodedOutput" readonly placeholder="Encoded output will appear here..." aria-label="Encoded output"></textarea>
           <div class="btn-group">
             <button id="copyEncoded">Copy</button>
             <button id="clearEncoded">Clear</button>
@@ -45,16 +51,17 @@
         </fieldset>
       </article>
 
+      <!-- Decode panel -->
       <article role="tabpanel" id="decode-tab" hidden>
         <fieldset>
           <legend>OHNISHJ Input</legend>
-          <textarea id="ohnishjInput" placeholder="Paste OHNISHJ text to decode..."></textarea>
+          <textarea id="ohnishjInput" placeholder="Paste OHNISHJ text to decode..." aria-label="OHNISHJ input"></textarea>
           <button id="decodeBtn">Decode</button>
         </fieldset>
 
         <fieldset>
           <legend>Decoded Output</legend>
-          <textarea id="decodedOutput" readonly placeholder="Decoded output will appear here..."></textarea>
+          <textarea id="decodedOutput" readonly placeholder="Decoded output will appear here..." aria-label="Decoded output"></textarea>
           <div class="btn-group">
             <button id="copyDecoded">Copy</button>
             <button id="clearDecoded">Clear</button>
@@ -63,12 +70,14 @@
       </article>
     </div>
     
+    <!-- Footer -->
     <div class="status-bar">
-      <p class="status-bar-field">Made by <a href="https://github.com/syslink-sh" target="_blank">SySLink</a></p>
+      <p class="status-bar-field">Made by <a href="https://github.com/syslink-sh" target="_blank" rel="noopener">SySLink</a></p>
     </div>
   </div>
 
-  <script src="ohnishj.js"></script>
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="js/ohnishj.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

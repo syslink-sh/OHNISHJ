@@ -1,3 +1,4 @@
+/* Base layout */
 body {
   background: #3e7cb1;
   background: linear-gradient(to bottom, #4580b3 0%, #2e5f8f 100%);
@@ -10,6 +11,7 @@ body {
   margin: 0;
 }
 
+/* Aero effect overlay */
 body::before {
   content: '';
   position: fixed;
@@ -23,6 +25,7 @@ body::before {
   pointer-events: none;
 }
 
+/* Main window */
 .window {
   max-width: 850px;
   width: 100%;
@@ -34,6 +37,7 @@ body::before {
   padding: 8px;
 }
 
+/* Form elements */
 fieldset {
   margin-bottom: 12px;
 }
@@ -56,6 +60,7 @@ fieldset button {
   min-width: 75px;
 }
 
+/* Button groups */
 .btn-group {
   margin-top: 6px;
   display: flex;
@@ -66,6 +71,7 @@ fieldset button {
   min-width: 70px;
 }
 
+/* Dialog modal */
 .dialog-overlay {
   position: fixed;
   top: 0;
@@ -93,6 +99,7 @@ fieldset button {
   min-width: 80px !important;
 }
 
+/* Status bar */
 .status-bar {
   margin: 0;
 }
@@ -106,6 +113,7 @@ fieldset button {
   text-decoration: underline;
 }
 
+/* Mobile responsive */
 @media (max-width: 768px) {
   body {
     padding: 1rem;
