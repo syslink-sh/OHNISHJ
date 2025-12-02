@@ -91,7 +91,7 @@ document.getElementById('decodeBtn').addEventListener('click', function() {
   } catch (e) {
     console.error(e);
     output.value = '';
-    showDialog('Invalid OHNISHJ text. Only letters J, O, H, N are allowed.');
+    showDialog('Invalid OHNISHJ text. Make sure it contains the ">" marker.');
   }
 });
 

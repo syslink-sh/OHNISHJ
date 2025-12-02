@@ -1,4 +1,4 @@
-<img style="width: 128px; height: 128px" src="favicon.png" alt="OHNISHJ Translator Logo" />
+<img style="width: 128px; height: 128px" src="gh-images/logo.png alt="OHNISHJ Translator Logo" />
 
 # OHNISHJ Translator
 
@@ -8,29 +8,27 @@ A text encoding/decoding tool that converts text to and from the OHNISHJ format.
 
 ## About
 
-The OHNISHJ Translator is a browser-based tool that encodes ASCII text into a special format using the letters J, O, H, and N. Each letter's case (uppercase or lowercase) represents binary bits, creating a unique text representation.
+The OHNISHJ Translator is a browser-based tool that encodes text using a word scrambling algorithm. It rearranges sentences by moving the subject to the end and scrambling individual words.
 
 ## Features
 
 - **Encode** - Convert plain text to OHNISHJ format
 - **Decode** - Convert OHNISHJ text back to plain text
-- **Real-time Processing** - Instant encoding and decoding
 
 ## How It Works
 
 The OHNISHJ encoding system works by:
 
-1. Converting each character to 7-bit ASCII binary
-2. Padding to 8 bits
-3. Splitting into 4-bit chunks
-4. Mapping each chunk to the word "john" where:
-   - Uppercase letter = 1
-   - Lowercase letter = 0
+1. Scrambling each word by moving the first letter to the end
+2. Identifying the sentence split point (typically at the main verb)
+3. Rearranging the sentence by moving the subject to the end
+4. Placing a `>` marker between the verb/object and the subject
 
 **Example:**
-- Input: `Hi`
-- Binary: `1001000` (H) + `1101001` (i)
-- Encoded: `JOHn john jOHN joHn`
+- Input: `The cat jumps`
+- Word scrambling: `heT atc umpsj`
+- Sentence rearrangement: `umpsj> heT atc`
+- Result: The verb/object comes first, followed by `>`, then the subject
 
 ## Getting Started
 Simply open `index.html` in a web browser. No installation or build process required.
@@ -38,7 +36,6 @@ Simply open `index.html` in a web browser. No installation or build process requ
 ### Prerequisites
 - Web browser with JavaScript enabled
 - Support for CSS backdrop-filter (for aero effect)
-
 
 ## Usage
 
@@ -52,7 +49,7 @@ Simply open `index.html` in a web browser. No installation or build process requ
 ### Decoding Text
 
 1. Click the **Decode** tab
-2. Paste OHNISHJ text (only letters j, o, h, n allowed)
+2. Paste OHNISHJ text (must contain the `>` marker)
 3. Click **Decode** or press `Ctrl+Enter`
 4. Copy the decoded output using the **Copy** button
 
