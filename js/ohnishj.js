@@ -96,12 +96,32 @@ var Ohnishj = (function() {
     return wordIndices[splitPoint];
   }
   
-  // Encode text
-  function encode(text) {
-    if (!text || !text.trim()) {
-      throw new Error('Empty input');
+  // Split by sentences
+  function splitSentences(text) {
+    var sentences = [];
+    var current = '';
+    
+    for (var i = 0; i < text.length; i++) {
+      var ch = text.charAt(i);
+      current += ch;
+      
+      // Sentence terminators
+      if (ch === '.' || ch === '!' || ch === '?' || ch === '⸮' || ch === '‽') {
+        sentences.push(current);
+        current = '';
+      }
     }
     
+    // Remaining text
+    if (current.trim()) {
+      sentences.push(current);
+    }
+    
+    return sentences;
+  }
+  
+  // Encode single sentence
+  function encodeSentence(text) {
     var tokens = tokenize(text);
     var wordIndices = [];
     
@@ -136,12 +156,28 @@ var Ohnishj = (function() {
     return verbObject.trimEnd() + '> ' + subject.trimEnd();
   }
   
-  // Decode text
-  function decode(ohnishjText) {
-    if (!ohnishjText || !ohnishjText.trim()) {
+  // Encode text
+  function encode(text) {
+    if (!text || !text.trim()) {
       throw new Error('Empty input');
     }
     
+    var sentences = splitSentences(text);
+    var encoded = [];
+    
+    // Process each sentence
+    for (var i = 0; i < sentences.length; i++) {
+      var sentence = sentences[i].trim();
+      if (sentence) {
+        encoded.push(encodeSentence(sentence));
+      }
+    }
+    
+    return encoded.join(' ');
+  }
+  
+  // Decode single sentence
+  function decodeSentence(ohnishjText) {
     var markerIndex = ohnishjText.indexOf('>');
     
     // Validate marker
@@ -170,6 +206,27 @@ var Ohnishj = (function() {
     }
     
     return result;
+  }
+  
+  // Decode text
+  function decode(ohnishjText) {
+    if (!ohnishjText || !ohnishjText.trim()) {
+      throw new Error('Empty input');
+    }
+    
+    // Split by sentence markers
+    var parts = ohnishjText.split(/(?<=>)\s+(?=[^>]*>)/);
+    var decoded = [];
+    
+    // Process each part
+    for (var i = 0; i < parts.length; i++) {
+      var part = parts[i].trim();
+      if (part) {
+        decoded.push(decodeSentence(part));
+      }
+    }
+    
+    return decoded.join(' ');
   }
   
   // Public API
