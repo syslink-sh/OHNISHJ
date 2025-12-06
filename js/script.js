@@ -1,4 +1,3 @@
-// Show modal dialog
 function showDialog(msg) {
   const overlay = document.createElement('div');
   overlay.className = 'dialog-overlay';
@@ -30,7 +29,6 @@ function showDialog(msg) {
   const btn = win.querySelector('.dialog-ok');
   const closeBtn = win.querySelector('.title-bar-controls button');
   
-  // Close handler
   function close() {
     document.body.removeChild(overlay);
   }
@@ -39,13 +37,11 @@ function showDialog(msg) {
   closeBtn.onclick = close;
   btn.focus();
   
-  // Click outside closes
   overlay.onclick = (e) => {
     if (e.target === overlay) close();
   };
 }
 
-// Tab switching
 const tabs = document.querySelectorAll('[role="tab"]');
 const panels = document.querySelectorAll('[role="tabpanel"]');
 
@@ -53,17 +49,14 @@ tabs.forEach(tab => {
   tab.addEventListener('click', function() {
     const target = this.getAttribute('aria-controls');
     
-    // Reset all
     tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
     panels.forEach(p => p.hidden = true);
     
-    // Activate selected
     this.setAttribute('aria-selected', 'true');
     document.getElementById(target).hidden = false;
   });
 });
 
-// Encode handler
 document.getElementById('encodeBtn').addEventListener('click', function() {
   const input = document.getElementById('plainInput');
   const output = document.getElementById('encodedOutput');
@@ -83,7 +76,6 @@ document.getElementById('encodeBtn').addEventListener('click', function() {
   }
 });
 
-// Decode handler
 document.getElementById('decodeBtn').addEventListener('click', function() {
   const input = document.getElementById('ohnishjInput');
   const output = document.getElementById('decodedOutput');
@@ -103,10 +95,8 @@ document.getElementById('decodeBtn').addEventListener('click', function() {
   }
 });
 
-// Copy to clipboard
 function copyText(text) {
   if (navigator.clipboard) {
-    // Modern API
     navigator.clipboard.writeText(text).then(() => {
       showDialog('Copied to clipboard!');
     }).catch(err => {
@@ -114,7 +104,6 @@ function copyText(text) {
       showDialog('Failed to copy.');
     });
   } else {
-    // Fallback method
     const temp = document.createElement('textarea');
     temp.value = text;
     temp.style.position = 'fixed';
@@ -133,7 +122,6 @@ function copyText(text) {
   }
 }
 
-// Copy buttons
 document.getElementById('copyEncoded').addEventListener('click', function() {
   const text = document.getElementById('encodedOutput').value.trim();
   if (text) copyText(text);
@@ -144,7 +132,6 @@ document.getElementById('copyDecoded').addEventListener('click', function() {
   if (text) copyText(text);
 });
 
-// Clear buttons
 document.getElementById('clearEncoded').addEventListener('click', function() {
   document.getElementById('encodedOutput').value = '';
 });
@@ -153,7 +140,6 @@ document.getElementById('clearDecoded').addEventListener('click', function() {
   document.getElementById('decodedOutput').value = '';
 });
 
-// Keyboard shortcuts
 document.getElementById('plainInput').addEventListener('keydown', function(e) {
   if (e.ctrlKey && e.key === 'Enter') {
     e.preventDefault();

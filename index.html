@@ -10,9 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Main window -->
   <div class="window glass active">
-    <!-- Title bar -->
     <div class="title-bar">
       <div class="title-bar-text">
         <img src="favicon.png" alt="Logo" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;">
@@ -25,15 +23,12 @@
       </div>
     </div>
     
-    <!-- Content area -->
     <div class="window-body">
-      <!-- Tab navigation -->
       <menu role="tablist">
         <button role="tab" aria-selected="true" aria-controls="encode-tab">Encode</button>
         <button role="tab" aria-controls="decode-tab">Decode</button>
       </menu>
 
-      <!-- Encode panel -->
       <article role="tabpanel" id="encode-tab">
         <fieldset>
           <legend>Input Text</legend>
@@ -51,7 +46,6 @@
         </fieldset>
       </article>
 
-      <!-- Decode panel -->
       <article role="tabpanel" id="decode-tab" hidden>
         <fieldset>
           <legend>OHNISHJ Input</legend>
@@ -70,13 +64,11 @@
       </article>
     </div>
     
-    <!-- Footer -->
     <div class="status-bar">
       <p class="status-bar-field">Made by <a href="https://github.com/syslink-sh" target="_blank" rel="noopener">SySLink</a></p>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="js/ohnishj.js"></script>
   <script src="js/script.js"></script>
 </body>
