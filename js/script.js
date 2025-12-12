@@ -1,10 +1,13 @@
 function showDialog(msg) {
   const overlay = document.createElement('div');
   overlay.className = 'dialog-overlay';
+  overlay.setAttribute('role', 'presentation');
   
   const win = document.createElement('div');
   win.className = 'window';
   win.style.maxWidth = '380px';
+  win.setAttribute('role', 'dialog');
+  win.setAttribute('aria-modal', 'true');
   
   win.innerHTML = `
     <div class="title-bar">
@@ -42,22 +45,24 @@ function showDialog(msg) {
   };
 }
 
-const tabs = document.querySelectorAll('[role="tab"]');
-const panels = document.querySelectorAll('[role="tabpanel"]');
+const tabs = document.querySelectorAll('[role="tab"]') || [];
+const panels = document.querySelectorAll('[role="tabpanel"]') || [];
 
 tabs.forEach(tab => {
   tab.addEventListener('click', function() {
     const target = this.getAttribute('aria-controls');
-    
+
     tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
     panels.forEach(p => p.hidden = true);
-    
+
     this.setAttribute('aria-selected', 'true');
-    document.getElementById(target).hidden = false;
+    const panel = document.getElementById(target);
+    if (panel) panel.hidden = false;
   });
 });
 
-document.getElementById('encodeBtn').addEventListener('click', function() {
+const encodeBtn = document.getElementById('encodeBtn');
+if (encodeBtn) encodeBtn.addEventListener('click', function() {
   const input = document.getElementById('plainInput');
   const output = document.getElementById('encodedOutput');
   const text = input.value.trim();
@@ -75,8 +80,8 @@ document.getElementById('encodeBtn').addEventListener('click', function() {
     showDialog('Failed to encode text. Please check your input.');
   }
 });
-
-document.getElementById('decodeBtn').addEventListener('click', function() {
+const decodeBtn = document.getElementById('decodeBtn');
+if (decodeBtn) decodeBtn.addEventListener('click', function() {
   const input = document.getElementById('ohnishjInput');
   const output = document.getElementById('decodedOutput');
   const text = input.value.trim();
@@ -96,60 +101,75 @@ document.getElementById('decodeBtn').addEventListener('click', function() {
 });
 
 function copyText(text) {
-  if (navigator.clipboard) {
+  if (!text) return showDialog('Nothing to copy');
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(() => {
       showDialog('Copied to clipboard!');
     }).catch(err => {
-      console.error(err);
-      showDialog('Failed to copy.');
+      console.error('Clipboard write failed', err);
+      showDialog('Failed to copy to clipboard. Try copying manually.');
     });
-  } else {
+    return;
+  }
+
+  // Fallback
+  try {
     const temp = document.createElement('textarea');
     temp.value = text;
     temp.style.position = 'fixed';
     temp.style.opacity = '0';
     document.body.appendChild(temp);
     temp.select();
-    
-    try {
-      document.execCommand('copy');
-      showDialog('Copied to clipboard!');
-    } catch (e) {
-      showDialog('Failed to copy.');
-    }
-    
+    document.execCommand('copy');
     document.body.removeChild(temp);
+    showDialog('Copied to clipboard!');
+  } catch (e) {
+    console.error('Fallback copy failed', e);
+    showDialog('Failed to copy. Your browser may not support clipboard operations.');
   }
 }
 
-document.getElementById('copyEncoded').addEventListener('click', function() {
-  const text = document.getElementById('encodedOutput').value.trim();
+const copyEncoded = document.getElementById('copyEncoded');
+if (copyEncoded) copyEncoded.addEventListener('click', function() {
+  const outEl = document.getElementById('encodedOutput');
+  const text = outEl ? outEl.value.trim() : '';
   if (text) copyText(text);
 });
 
-document.getElementById('copyDecoded').addEventListener('click', function() {
-  const text = document.getElementById('decodedOutput').value.trim();
+const copyDecoded = document.getElementById('copyDecoded');
+if (copyDecoded) copyDecoded.addEventListener('click', function() {
+  const outEl = document.getElementById('decodedOutput');
+  const text = outEl ? outEl.value.trim() : '';
   if (text) copyText(text);
 });
 
-document.getElementById('clearEncoded').addEventListener('click', function() {
-  document.getElementById('encodedOutput').value = '';
+const clearEncoded = document.getElementById('clearEncoded');
+if (clearEncoded) clearEncoded.addEventListener('click', function() {
+  const outEl = document.getElementById('encodedOutput');
+  if (outEl) outEl.value = '';
 });
 
-document.getElementById('clearDecoded').addEventListener('click', function() {
-  document.getElementById('decodedOutput').value = '';
+const clearDecoded = document.getElementById('clearDecoded');
+if (clearDecoded) clearDecoded.addEventListener('click', function() {
+  const outEl = document.getElementById('decodedOutput');
+  if (outEl) outEl.value = '';
 });
 
-document.getElementById('plainInput').addEventListener('keydown', function(e) {
+const plainInput = document.getElementById('plainInput');
+if (plainInput) plainInput.addEventListener('keydown', function(e) {
   if (e.ctrlKey && e.key === 'Enter') {
     e.preventDefault();
-    document.getElementById('encodeBtn').click();
+    const btn = document.getElementById('encodeBtn');
+    if (btn) btn.click();
   }
 });
 
-document.getElementById('ohnishjInput').addEventListener('keydown', function(e) {
+const ohnishjInput = document.getElementById('ohnishjInput');
+if (ohnishjInput) ohnishjInput.addEventListener('keydown', function(e) {
   if (e.ctrlKey && e.key === 'Enter') {
     e.preventDefault();
-    document.getElementById('decodeBtn').click();
+    const btn = document.getElementById('decodeBtn');
+    if (btn) btn.click();
   }
 });
