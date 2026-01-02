@@ -1,0 +1,50 @@
+:root {
+	--font-serif: "Georgia", "Baskerville", "Times New Roman", serif;
+	--font-sans: "Helvetica", "Arial", "Verdana", sans-serif;
+
+	--color-bg: #fdfdfd;
+	--color-text: #1a1a1a;
+	--color-border: #333333;
+	--color-muted: #666666;
+	--color-accent: #2c3e50;
+	--color-paper: #ffffff;
+}
+
+[data-theme="dark"] {
+	--color-bg: #121212;
+	--color-text: #e0e0e0;
+	--color-border: #444444;
+	--color-muted: #999999;
+	--color-accent: #bdc3c7;
+	--color-paper: #1a1a1a;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-serif);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: normal;
+	letter-spacing: -0.02em;
+}
+
+button {
+	font-family: var(--font-sans);
+	cursor: pointer;
+}
+
+textarea {
+	font-family: var(--font-serif);
+}

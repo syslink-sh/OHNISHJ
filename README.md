@@ -8,51 +8,57 @@ A text encoding/decoding tool that converts text to and from the OHNISHJ format.
 
 ## About
 
-The OHNISHJ Translator is a browser-based tool that encodes text using a word scrambling algorithm. It rearranges sentences by moving the subject to the end and scrambling individual words.
+The OHNISHJ Translator is a browser-based tool that encodes text using a word scrambling algorithm. It rearranges sentences by moving the subject to the end and scrambling individual words, creating a unique reversible linguistic pattern.
 
 ## Features
 
-- **Encode** - Convert plain text to OHNISHJ format
-- **Decode** - Convert OHNISHJ text back to plain text
+- **Reversible Encoding** - Convert English sentences into the OHNISHJ format.
+- **Directional Decoding** - Restore original text from the OHNISHJ format.
+- **Side-by-Side Interface** - View source and transformed text simultaneously for better clarity.
+- **Modern-Classic Aesthetic** - A timeless, editorial design focused on typography and clarity.
 
 ## How It Works
 
 The OHNISHJ encoding system works by:
 
-1. Scrambling each word by moving the first letter to the end
-2. Identifying the sentence split point (typically at the main verb)
-3. Rearranging the sentence by moving the subject to the end
-4. Placing a `>` marker between the verb/object and the subject
+1. **Word Scrambling**: Moving the first letter of each word to its end.
+2. **Verb Splitting**: Identifying the primary split point (typically the main verb).
+3. **Restructuring**: Moving the subject (everything before the split) to the end of the sentence.
+4. **Marking**: Placing a `>` delimiter between the verb/object cluster and the subject.
 
 **Example:**
-- Input: `The cat jumps`
-- Word scrambling: `heT atc umpsj`
-- Sentence rearrangement: `umpsj> heT atc`
-- Result: The verb/object comes first, followed by `>`, then the subject
+- **Input**: `The cat jumps`
+- **Word scrambling**: `heT atc umpsj`
+- **Restructuring**: `umpsj> heT atc`
 
 ## Getting Started
-Simply open `index.html` in a web browser. No installation or build process required.
 
 ### Prerequisites
-- Web browser with JavaScript enabled
-- Support for CSS backdrop-filter (for aero effect)
+- Node.js (v18 or higher)
+- npm or pnpm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 ## Usage
 
-### Encoding Text
+### Encoding
+1. Ensure the mode is set to **English to OHNISHJ**.
+2. Type or paste your text in the **Source Text** area.
+3. The result appears instantly in the **Transformed Text** area.
 
-1. Click the **Encode** tab
-2. Type or paste your text in the input field
-3. Click **Encode** or press `Ctrl+Enter`
-4. Copy the output using the **Copy** button
-
-### Decoding Text
-
-1. Click the **Decode** tab
-2. Paste OHNISHJ text (must contain the `>` marker)
-3. Click **Decode** or press `Ctrl+Enter`
-4. Copy the decoded output using the **Copy** button
-
-**Note:** The Aero effect requires browsers with backdrop-filter support. Older browsers will show a solid background instead.
+### Decoding
+1. Click the toggle button to switch to **OHNISHJ to English**.
+2. Paste OHNISHJ text (containing the `>` marker).
+3. The original English text will be restored.
 
 ---
