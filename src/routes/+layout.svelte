@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import { injectAnalytics } from "@vercel/analytics/sveltekit";
 	import "../app.css";
+
+	injectAnalytics();
 
 	let { children } = $props();
 	let theme = $state<"dark" | "light">("dark");
