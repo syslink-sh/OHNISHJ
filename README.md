@@ -1,11 +1,7 @@
-<img style="width: 128px; height: 128px" src="gh-images/logo.png" alt="OHNISHJ Translator Logo"/>
 
 ## OHNISHJ Translator
 
 A text encoding/decoding tool that converts text to and from the OHNISHJ format.
-
-[View the website](https://ohnishj.syslink.dev)
-
 ## About
 
 The OHNISHJ Translator is a browser-based tool that encodes text using a word scrambling algorithm. It rearranges sentences by moving the subject to the end and scrambling individual words, creating a unique reversible linguistic pattern.
